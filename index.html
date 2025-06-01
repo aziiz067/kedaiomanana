@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roemah Oma Nana - Cita Rasa Manis dari Dapoer Oma</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,49 +13,18 @@
         }
 
         body {
-            font-family: 'Georgia', 'Times New Roman', serif;
-            background: linear-gradient(135deg, #025253 0%, #0a6b6c 50%, #025253 100%);
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #025253 0%, #0a6b6c 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
             overflow-x: hidden;
-            position: relative;
-        }
-
-        /* Decorative background elements */
-        .bg-decoration {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-            overflow: hidden;
-        }
-
-        .bg-decoration::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 30% 20%, rgba(251, 247, 233, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 80%, rgba(251, 247, 233, 0.08) 0%, transparent 50%),
-                        radial-gradient(circle at 20% 70%, rgba(251, 247, 233, 0.06) 0%, transparent 50%);
-            animation: backgroundFloat 20s ease-in-out infinite;
-        }
-
-        @keyframes backgroundFloat {
-            0%, 100% { transform: rotate(0deg) scale(1); }
-            50% { transform: rotate(180deg) scale(1.1); }
         }
 
         .container {
-            max-width: 420px;
+            max-width: 400px;
             width: 100%;
             background: linear-gradient(145deg, rgba(251, 247, 233, 0.95), rgba(251, 247, 233, 0.98));
             backdrop-filter: blur(20px);
@@ -150,26 +120,20 @@
         .profile h1 {
             color: #025253;
             font-size: 32px;
-            font-weight: 800;
+            font-weight: 700;
             margin-bottom: 8px;
             text-shadow: 2px 2px 4px rgba(2, 82, 83, 0.1);
-            font-family: 'Georgia', serif;
-            letter-spacing: -0.5px;
+            font-family: 'Dancing Script', cursive;
+            letter-spacing: 0.5px;
         }
 
         .profile-tagline {
             color: #025253;
             font-size: 16px;
-            font-style: italic;
+            font-family: 'Dancing Script', cursive;
+            font-weight: 500;
             margin-bottom: 5px;
             opacity: 0.8;
-        }
-
-        .profile-subtitle {
-            color: #025253;
-            font-size: 14px;
-            font-weight: 500;
-            opacity: 0.7;
         }
 
         .links {
@@ -244,33 +208,31 @@
             transform: translateY(-4px) scale(0.98);
         }
 
+        .link-photo {
+            width: 60px;
+            height: 45px; /* 4:3 ratio */
+            border-radius: 12px;
+            object-fit: cover;
+            flex-shrink: 0;
+            border: 2px solid rgba(251, 247, 233, 0.3);
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 4px 15px rgba(2, 82, 83, 0.2);
+        }
+
         .link-icon {
-            width: 50px;
-            height: 50px;
-            font-size: 24px;
+            width: 60px;
+            height: 45px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            background: rgba(251, 247, 233, 0.1);
-            border-radius: 12px;
-            border: 1px solid rgba(251, 247, 233, 0.2);
+            border: 2px solid rgba(251, 247, 233, 0.3);
             position: relative;
             z-index: 1;
-        }
-
-        .menu-photo {
-            width: 50px;
-            height: 37.5px; /* 4:3 ratio */
-            border-radius: 8px;
-            object-fit: cover;
-            background: linear-gradient(45deg, #fbf7e9, #e8e0c7);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            color: #025253;
-            border: 2px solid rgba(251, 247, 233, 0.3);
+            box-shadow: 0 4px 15px rgba(2, 82, 83, 0.2);
+            font-size: 24px;
         }
 
         .link-content {
@@ -280,91 +242,18 @@
         }
 
         .link-title {
-            font-weight: 700;
+            font-weight: 600;
             font-size: 17px;
             margin-bottom: 4px;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            font-family: 'Poppins', sans-serif;
         }
 
         .link-desc {
             font-size: 13px;
             color: rgba(251, 247, 233, 0.8);
-            font-weight: 300;
-            font-style: italic;
-        }
-
-        .link-arrow {
-            font-size: 20px;
-            opacity: 0.8;
-            transition: transform 0.4s ease;
-            position: relative;
-            z-index: 1;
-        }
-
-        .link:hover .link-arrow {
-            transform: translateX(8px) scale(1.2);
-            opacity: 1;
-        }
-
-        .floating-elements {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        .floating-shape {
-            position: absolute;
-            border-radius: 50%;
-            opacity: 0.1;
-        }
-
-        .shape-1 {
-            width: 100px;
-            height: 100px;
-            background: #fbf7e9;
-            top: 15%;
-            left: 10%;
-            animation: float1 15s infinite ease-in-out;
-        }
-
-        .shape-2 {
-            width: 150px;
-            height: 150px;
-            background: #fbf7e9;
-            top: 60%;
-            right: 5%;
-            animation: float2 20s infinite ease-in-out reverse;
-        }
-
-        .shape-3 {
-            width: 80px;
-            height: 80px;
-            background: #fbf7e9;
-            top: 75%;
-            left: 15%;
-            animation: float3 12s infinite ease-in-out;
-        }
-
-        @keyframes float1 {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            33% { transform: translateY(-30px) rotate(120deg); }
-            66% { transform: translateY(20px) rotate(240deg); }
-        }
-
-        @keyframes float2 {
-            0%, 100% { transform: translateX(0px) rotate(0deg); }
-            50% { transform: translateX(-50px) rotate(180deg); }
-        }
-
-        @keyframes float3 {
-            0%, 100% { transform: translate(0px, 0px) rotate(0deg); }
-            25% { transform: translate(20px, -20px) rotate(90deg); }
-            50% { transform: translate(-15px, -30px) rotate(180deg); }
-            75% { transform: translate(-25px, 10px) rotate(270deg); }
+            font-weight: 400;
+            font-family: 'Poppins', sans-serif;
         }
 
         .footer {
@@ -412,57 +301,86 @@
         /* Responsive Design */
         @media (max-width: 480px) {
             .container {
-                padding: 35px 25px;
+                padding: 25px 20px;
                 margin: 10px;
-                border-radius: 25px;
+                border-radius: 20px;
+                max-width: 380px;
+            }
+
+            .profile {
+                margin-bottom: 30px;
             }
 
             .profile h1 {
-                font-size: 28px;
+                font-size: 24px;
             }
 
             .profile-pic {
-                width: 120px;
-                height: 120px;
-                font-size: 46px;
+                width: 100px;
+                height: 100px;
+                font-size: 38px;
+                margin-bottom: 20px;
+            }
+
+            .profile-tagline {
+                font-size: 14px;
+            }
+
+            .links {
+                gap: 12px;
             }
 
             .link {
-                padding: 18px 22px;
-                gap: 15px;
+                padding: 14px 16px;
+                gap: 12px;
+                border-radius: 16px;
             }
 
             .link-title {
-                font-size: 16px;
+                font-size: 14px;
             }
 
-            .link-icon, .menu-photo {
-                width: 45px;
-                height: 45px;
+            .link-desc {
+                font-size: 11px;
             }
 
-            .menu-photo {
-                height: 33.75px; /* maintain 4:3 ratio */
+            .footer {
+                margin-top: 25px;
+                padding-top: 20px;
+            }
+
+            .footer p {
+                font-size: 11px;
             }
         }
 
         @media (max-width: 360px) {
             .container {
-                padding: 30px 20px;
+                padding: 20px 15px;
+                max-width: 340px;
             }
 
             .profile-pic {
-                width: 110px;
-                height: 110px;
-                font-size: 42px;
+                width: 90px;
+                height: 90px;
+                font-size: 34px;
             }
 
             .profile h1 {
-                font-size: 26px;
+                font-size: 22px;
             }
 
             .link {
-                padding: 16px 20px;
+                padding: 12px 14px;
+                gap: 10px;
+            }
+
+            .link-title {
+                font-size: 13px;
+            }
+
+            .link-desc {
+                font-size: 10px;
             }
         }
 
@@ -491,14 +409,6 @@
     </style>
 </head>
 <body>
-    <div class="bg-decoration"></div>
-    
-    <div class="floating-elements">
-        <div class="floating-shape shape-1"></div>
-        <div class="floating-shape shape-2"></div>
-        <div class="floating-shape shape-3"></div>
-    </div>
-
     <div class="container">
         <div class="corner-decoration top-left"></div>
         <div class="corner-decoration bottom-right"></div>
@@ -506,18 +416,16 @@
         <div class="profile">
             <div class="profile-pic">RO</div>
             <h1>Roemah Oma Nana</h1>
-            <p class="profile-tagline">Cita Rasa Manis</p>
-            <p class="profile-subtitle">dari Dapoer Oma</p>
+            <p class="profile-tagline">Cita Rasa Manis dari Dapoer Oma</p>
         </div>
 
         <div class="links">
             <a href="#" class="link" onclick="handleMenuClick()">
-                <div class="menu-photo">🍰</div>
+                <img src="menu.jpg" alt="Menu" class="link-photo">
                 <div class="link-content">
                     <div class="link-title">Menu Book</div>
                     <div class="link-desc">Lihat koleksi menu manis kami</div>
                 </div>
-                <div class="link-arrow">→</div>
             </a>
 
             <a href="#" class="link" onclick="handleLocationClick()">
@@ -526,16 +434,14 @@
                     <div class="link-title">Lokasi Kedai</div>
                     <div class="link-desc">Temukan dapoer oma di peta</div>
                 </div>
-                <div class="link-arrow">→</div>
             </a>
 
             <a href="#" class="link" onclick="handleOrderClick()">
-                <div class="link-icon">🛍️</div>
+                <div class="link-icon">💬</div>
                 <div class="link-content">
                     <div class="link-title">Pesan Sekarang</div>
                     <div class="link-desc">Order langsung via WhatsApp</div>
                 </div>
-                <div class="link-arrow">→</div>
             </a>
 
             <a href="#" class="link" onclick="handleInstagramClick()">
@@ -544,16 +450,14 @@
                     <div class="link-title">Instagram</div>
                     <div class="link-desc">Ikuti resep & tips dari oma</div>
                 </div>
-                <div class="link-arrow">→</div>
             </a>
 
             <a href="#" class="link" onclick="handlePromoClick()">
-                <div class="link-icon">🎉</div>
+                <div class="link-icon">🎁</div>
                 <div class="link-content">
                     <div class="link-title">Promo Spesial</div>
                     <div class="link-desc">Kejutan manis setiap hari!</div>
                 </div>
-                <div class="link-arrow">→</div>
             </a>
 
             <a href="#" class="link" onclick="handleReviewClick()">
@@ -562,7 +466,6 @@
                     <div class="link-title">Cerita Pelanggan</div>
                     <div class="link-desc">Baca testimoni rasa manis kami</div>
                 </div>
-                <div class="link-arrow">→</div>
             </a>
         </div>
 
