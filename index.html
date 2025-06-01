@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roemah Oma Nana - Cita Rasa Manis dari Dapoer Oma</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: linear-gradient(135deg, #025253 0%, #0a6b6c 50%, #025253 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Decorative background elements */
+        .bg-decoration {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bg-decoration::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 20%, rgba(251, 247, 233, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(251, 247, 233, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 20% 70%, rgba(251, 247, 233, 0.06) 0%, transparent 50%);
+            animation: backgroundFloat 20s ease-in-out infinite;
+        }
+
+        @keyframes backgroundFloat {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
+        }
+
+        .container {
+            max-width: 420px;
+            width: 100%;
+            background: linear-gradient(145deg, rgba(251, 247, 233, 0.95), rgba(251, 247, 233, 0.98));
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 45px 35px;
+            box-shadow: 
+                0 30px 60px rgba(2, 82, 83, 0.4),
+                0 15px 30px rgba(2, 82, 83, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            border: 2px solid rgba(2, 82, 83, 0.1);
+            animation: containerFloat 0.8s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(2, 82, 83, 0.05), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        @keyframes containerFloat {
+            from {
+                opacity: 0;
+                transform: translateY(50px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .profile {
+            text-align: center;
+            margin-bottom: 45px;
+            position: relative;
+        }
+
+        .profile-pic {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #025253, #0a6b6c);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            box-shadow: 
+                0 20px 40px rgba(2, 82, 83, 0.3),
+                0 10px 20px rgba(2, 82, 83, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            border: 4px solid #fbf7e9;
+            font-size: 52px;
+            font-weight: bold;
+            color: #fbf7e9;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            animation: profilePulse 3s ease-in-out infinite;
+        }
+
+        .profile-pic::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(251, 247, 233, 0.3), transparent);
+            animation: rotate 4s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes profilePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .profile h1 {
+            color: #025253;
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            text-shadow: 2px 2px 4px rgba(2, 82, 83, 0.1);
+            font-family: 'Georgia', serif;
+            letter-spacing: -0.5px;
+        }
+
+        .profile-tagline {
+            color: #025253;
+            font-size: 16px;
+            font-style: italic;
+            margin-bottom: 5px;
+            opacity: 0.8;
+        }
+
+        .profile-subtitle {
+            color: #025253;
+            font-size: 14px;
+            font-weight: 500;
+            opacity: 0.7;
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .link {
+            background: linear-gradient(135deg, rgba(2, 82, 83, 0.95), rgba(2, 82, 83, 0.98));
+            border: 2px solid rgba(251, 247, 233, 0.2);
+            border-radius: 20px;
+            padding: 20px 25px;
+            text-decoration: none;
+            color: #fbf7e9;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                0 8px 25px rgba(2, 82, 83, 0.3),
+                inset 0 1px 0 rgba(251, 247, 233, 0.1);
+        }
+
+        .link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(251, 247, 233, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .link:hover::before {
+            left: 100%;
+        }
+
+        .link::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(251, 247, 233, 0.1), transparent);
+            transition: all 0.6s;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+        }
+
+        .link:hover::after {
+            width: 300px;
+            height: 300px;
+        }
+
+        .link:hover {
+            transform: translateY(-8px) scale(1.03);
+            background: linear-gradient(135deg, rgba(2, 82, 83, 1), rgba(10, 107, 108, 1));
+            box-shadow: 
+                0 20px 50px rgba(2, 82, 83, 0.4),
+                0 10px 25px rgba(2, 82, 83, 0.2),
+                inset 0 1px 0 rgba(251, 247, 233, 0.2);
+            border-color: rgba(251, 247, 233, 0.4);
+        }
+
+        .link:active {
+            transform: translateY(-4px) scale(0.98);
+        }
+
+        .link-icon {
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            background: rgba(251, 247, 233, 0.1);
+            border-radius: 12px;
+            border: 1px solid rgba(251, 247, 233, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .menu-photo {
+            width: 50px;
+            height: 37.5px; /* 4:3 ratio */
+            border-radius: 8px;
+            object-fit: cover;
+            background: linear-gradient(45deg, #fbf7e9, #e8e0c7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #025253;
+            border: 2px solid rgba(251, 247, 233, 0.3);
+        }
+
+        .link-content {
+            flex: 1;
+            position: relative;
+            z-index: 1;
+        }
+
+        .link-title {
+            font-weight: 700;
+            font-size: 17px;
+            margin-bottom: 4px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .link-desc {
+            font-size: 13px;
+            color: rgba(251, 247, 233, 0.8);
+            font-weight: 300;
+            font-style: italic;
+        }
+
+        .link-arrow {
+            font-size: 20px;
+            opacity: 0.8;
+            transition: transform 0.4s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .link:hover .link-arrow {
+            transform: translateX(8px) scale(1.2);
+            opacity: 1;
+        }
+
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+        }
+
+        .shape-1 {
+            width: 100px;
+            height: 100px;
+            background: #fbf7e9;
+            top: 15%;
+            left: 10%;
+            animation: float1 15s infinite ease-in-out;
+        }
+
+        .shape-2 {
+            width: 150px;
+            height: 150px;
+            background: #fbf7e9;
+            top: 60%;
+            right: 5%;
+            animation: float2 20s infinite ease-in-out reverse;
+        }
+
+        .shape-3 {
+            width: 80px;
+            height: 80px;
+            background: #fbf7e9;
+            top: 75%;
+            left: 15%;
+            animation: float3 12s infinite ease-in-out;
+        }
+
+        @keyframes float1 {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-30px) rotate(120deg); }
+            66% { transform: translateY(20px) rotate(240deg); }
+        }
+
+        @keyframes float2 {
+            0%, 100% { transform: translateX(0px) rotate(0deg); }
+            50% { transform: translateX(-50px) rotate(180deg); }
+        }
+
+        @keyframes float3 {
+            0%, 100% { transform: translate(0px, 0px) rotate(0deg); }
+            25% { transform: translate(20px, -20px) rotate(90deg); }
+            50% { transform: translate(-15px, -30px) rotate(180deg); }
+            75% { transform: translate(-25px, 10px) rotate(270deg); }
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 35px;
+            padding-top: 25px;
+            border-top: 2px solid rgba(2, 82, 83, 0.1);
+            position: relative;
+        }
+
+        .footer::before {
+            content: '✨';
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #fbf7e9;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+
+        .footer p {
+            color: #025253;
+            font-size: 13px;
+            font-weight: 500;
+            opacity: 0.7;
+        }
+
+        /* Sparkle effect */
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #fbf7e9;
+            border-radius: 50%;
+            animation: sparkle 2s infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 480px) {
+            .container {
+                padding: 35px 25px;
+                margin: 10px;
+                border-radius: 25px;
+            }
+
+            .profile h1 {
+                font-size: 28px;
+            }
+
+            .profile-pic {
+                width: 120px;
+                height: 120px;
+                font-size: 46px;
+            }
+
+            .link {
+                padding: 18px 22px;
+                gap: 15px;
+            }
+
+            .link-title {
+                font-size: 16px;
+            }
+
+            .link-icon, .menu-photo {
+                width: 45px;
+                height: 45px;
+            }
+
+            .menu-photo {
+                height: 33.75px; /* maintain 4:3 ratio */
+            }
+        }
+
+        @media (max-width: 360px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            .profile-pic {
+                width: 110px;
+                height: 110px;
+                font-size: 42px;
+            }
+
+            .profile h1 {
+                font-size: 26px;
+            }
+
+            .link {
+                padding: 16px 20px;
+            }
+        }
+
+        /* Additional decorative elements */
+        .corner-decoration {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border: 2px solid rgba(2, 82, 83, 0.1);
+            border-radius: 50%;
+        }
+
+        .corner-decoration.top-left {
+            top: 20px;
+            left: 20px;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .corner-decoration.bottom-right {
+            bottom: 20px;
+            right: 20px;
+            border-left: none;
+            border-top: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-decoration"></div>
+    
+    <div class="floating-elements">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+    </div>
+
+    <div class="container">
+        <div class="corner-decoration top-left"></div>
+        <div class="corner-decoration bottom-right"></div>
+        
+        <div class="profile">
+            <div class="profile-pic">RO</div>
+            <h1>Roemah Oma Nana</h1>
+            <p class="profile-tagline">Cita Rasa Manis</p>
+            <p class="profile-subtitle">dari Dapoer Oma</p>
+        </div>
+
+        <div class="links">
+            <a href="#" class="link" onclick="handleMenuClick()">
+                <div class="menu-photo">🍰</div>
+                <div class="link-content">
+                    <div class="link-title">Menu Book</div>
+                    <div class="link-desc">Lihat koleksi menu manis kami</div>
+                </div>
+                <div class="link-arrow">→</div>
+            </a>
+
+            <a href="#" class="link" onclick="handleLocationClick()">
+                <div class="link-icon">📍</div>
+                <div class="link-content">
+                    <div class="link-title">Lokasi Kedai</div>
+                    <div class="link-desc">Temukan dapoer oma di peta</div>
+                </div>
+                <div class="link-arrow">→</div>
+            </a>
+
+            <a href="#" class="link" onclick="handleOrderClick()">
+                <div class="link-icon">🛍️</div>
+                <div class="link-content">
+                    <div class="link-title">Pesan Sekarang</div>
+                    <div class="link-desc">Order langsung via WhatsApp</div>
+                </div>
+                <div class="link-arrow">→</div>
+            </a>
+
+            <a href="#" class="link" onclick="handleInstagramClick()">
+                <div class="link-icon">📸</div>
+                <div class="link-content">
+                    <div class="link-title">Instagram</div>
+                    <div class="link-desc">Ikuti resep & tips dari oma</div>
+                </div>
+                <div class="link-arrow">→</div>
+            </a>
+
+            <a href="#" class="link" onclick="handlePromoClick()">
+                <div class="link-icon">🎉</div>
+                <div class="link-content">
+                    <div class="link-title">Promo Spesial</div>
+                    <div class="link-desc">Kejutan manis setiap hari!</div>
+                </div>
+                <div class="link-arrow">→</div>
+            </a>
+
+            <a href="#" class="link" onclick="handleReviewClick()">
+                <div class="link-icon">⭐</div>
+                <div class="link-content">
+                    <div class="link-title">Cerita Pelanggan</div>
+                    <div class="link-desc">Baca testimoni rasa manis kami</div>
+                </div>
+                <div class="link-arrow">→</div>
+            </a>
+        </div>
+
+        <div class="footer">
+            <p>© 2025 Roemah Oma Nana</p>
+        </div>
+    </div>
+
+    <script>
+        // Fungsi untuk handle klik setiap link
+        function handleMenuClick() {
+            // Ganti dengan link menu book Anda
+            window.open('https://example.com/menu', '_blank');
+        }
+
+        function handleLocationClick() {
+            // Ganti dengan koordinat lokasi kedai Anda di Surabaya
+            window.open('https://maps.google.com/maps?q=-7.250445,112.768845', '_blank');
+        }
+
+        function handleOrderClick() {
+            // Ganti dengan nomor WhatsApp Anda
+            window.open('https://wa.me/6281234567890?text=Halo%20Roemah%20Oma%20Nana%2C%20saya%20mau%20pesan%20makanan%20manis', '_blank');
+        }
+
+        function handleInstagramClick() {
+            // Ganti dengan username Instagram Anda
+            window.open('https://instagram.com/roemah_oma_nana', '_blank');
+        }
+
+        function handlePromoClick() {
+            // Ganti dengan link promo/event Anda
+            window.open('https://example.com/promo', '_blank');
+        }
+
+        function handleReviewClick() {
+            // Ganti dengan link review (Google Reviews, dll)
+            window.open('https://g.page/r/your-business-id/review', '_blank');
+        }
+
+        // Animasi berurutan untuk links
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('.link');
+            links.forEach((link, index) => {
+                link.style.opacity = '0';
+                link.style.transform = 'translateY(30px)';
+                
+                setTimeout(() => {
+                    link.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                    link.style.opacity = '1';
+                    link.style.transform = 'translateY(0)';
+                }, index * 100 + 300);
+            });
+        });
+
+        // Efek sparkle random
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = Math.random() * 100 + '%';
+            sparkle.style.top = Math.random() * 100 + '%';
+            document.body.appendChild(sparkle);
+            
+            setTimeout(() => {
+                sparkle.remove();
+            }, 2000);
+        }
+
+        // Generate sparkles secara berkala
+        setInterval(createSparkle, 3000);
+
+        // Efek mouse movement
+        document.addEventListener('mousemove', function(e) {
+            const container = document.querySelector('.container');
+            const rect = container.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width;
+            const y = (e.clientY - rect.top) / rect.height;
+            
+            const moveX = (x - 0.5) * 10;
+            const moveY = (y - 0.5) * 10;
+            
+            container.style.transform = `translate(${moveX}px, ${moveY}px)`;
+        });
+
+        // Reset transform saat mouse keluar
+        document.addEventListener('mouseleave', function() {
+            const container = document.querySelector('.container');
+            container.style.transform = 'translate(0, 0)';
+        });
+
+        // Efek klik dengan ripple
+        document.querySelectorAll('.link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const ripple = document.createElement('div');
+                ripple.style.position = 'absolute';
+                ripple.style.borderRadius = '50%';
+                ripple.style.background = 'rgba(251, 247, 233, 0.3)';
+                ripple.style.pointerEvents = 'none';
+                ripple.style.width = ripple.style.height = '100px';
+                ripple.style.left = (e.layerX - 50) + 'px';
+                ripple.style.top = (e.layerY - 50) + 'px';
+                ripple.style.animation = 'ripple 0.6s ease-out';
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Add ripple animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                0% { transform: scale(0); opacity: 1; }
+                100% { transform: scale(2); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
